@@ -1,10 +1,13 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, {
+	Dispatch,
+	SetStateAction,
+	useContext,
+} from "react";
 import tw, { styled } from "twin.macro";
+import { GameContext } from "../context/game-context";
 import rules from "../assets/images/rules/rules-3.svg";
 import rulesBonus from "../assets/images/rules/rules-5.svg";
-
-// mobile --> full screen, height & width
-// desktop --> 25rem x 25.9375rem
+import X from "../assets/images/close.svg";
 
 // ===== TYPES =====
 type ModalProps = {
@@ -18,14 +21,37 @@ const Image = styled.img`
 	${tw`width[19.0625rem] height[16.9375rem]`};
 `;
 
-const ModalWrapper = styled.div`
-	${tw`w-screen h-full`};
-	${tw`xl:(width[25rem] height[25.9375rem])`};
+const Wrapper = styled.div`
+	${tw`w-screen h-screen`};
+	${tw`lg:(width[25rem] height[25.9375rem])`};
+	${tw`bg-white`};
+	${tw`mx-auto`}
 `;
 
 // ===== COMPONENTS =====
-export const Modal = ({ open, setOpen }: ModalProps) => {};
+export const Modal = ({ open, setOpen }: ModalProps) => {
+	const { gameType } = useContext(GameContext);
 
-export const Rules = () => {};
-
-export const BonusRules = () => {};
+	return (
+		<Wrapper>
+			<h1 tw="uppercase text-copy-dark text-center text-[32px]">
+				rules
+			</h1>
+			<div tw="mx-auto">
+				{gameType === `RPS` ? (
+					<Image src={rules} alt="Rules" />
+				) : (
+					<Image src={rulesBonus} alt="Rules" />
+				)}
+			</div>
+			<button
+				type="button"
+				aria-label="Close out rules"
+				onClick={() => setOpen(!open)}
+				tw="mx-auto"
+			>
+				<img src={X} alt="Close rules" />
+			</button>
+		</Wrapper>
+	);
+};

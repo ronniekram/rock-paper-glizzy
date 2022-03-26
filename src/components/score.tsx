@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import tw, { styled } from "twin.macro";
-import { ScoreContext } from "../context/score-context";
+import { GameContext } from "../context/game-context";
 
 const Wrapper = styled.div`
 	box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const Score = () => {
-	const { score } = useContext(ScoreContext);
+	const { score } = useContext(GameContext);
 
 	return (
 		<Wrapper>

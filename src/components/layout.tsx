@@ -1,6 +1,7 @@
 import * as React from "react";
 import { GlobalStyles } from "twin.macro";
 import { Global, css } from "@emotion/react";
+import { GameProvider } from "../context/game-context";
 
 const fonts = css`
 	@font-face {
@@ -27,11 +28,13 @@ const Layout = ({
 }: {
 	children: React.ReactNode;
 }): JSX.Element => (
-	<div {...rest}>
-		<GlobalStyles />
-		<Global styles={fonts} />
-		{children}
-	</div>
+	<GameProvider>
+		<div {...rest}>
+			<GlobalStyles />
+			<Global styles={fonts} />
+			{children}
+		</div>
+	</GameProvider>
 );
 
 export default Layout;

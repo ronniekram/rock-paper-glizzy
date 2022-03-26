@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import tw, { styled } from "twin.macro";
 import Score from "./score";
 import { GameContext } from "../context/game-context";
@@ -17,12 +17,12 @@ const Wrapper = styled.div`
 const image = [tw`h-full`];
 
 const Header = () => {
-	const { game } = useContext(GameContext);
+	const { gameType } = useContext(GameContext);
 
 	return (
 		<Wrapper>
 			<div>
-				{game === `RPS` ? (
+				{gameType === `RPS` ? (
 					<img
 						src={logo}
 						alt="Rock Paper Scissors"
