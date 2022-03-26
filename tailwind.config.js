@@ -31,6 +31,7 @@ module.exports = {
 				header: `hsl(217, 16%, 45%)`,
 			},
 			white: `#FFFFFF`,
+			transparent: `transparent`,
 		},
 		fontFamily: {
 			display: [`Barlow Semi Condensed`, `sans-serif`],

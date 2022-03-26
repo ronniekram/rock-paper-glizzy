@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 	}
 
 	h1 {
-		${tw`text-copy-header text-[40px] font-bold`};
+		${tw`text-copy-dark text-[40px] font-bold`};
 		${tw`xl:(text-[64px])`};
 	}
 `;
