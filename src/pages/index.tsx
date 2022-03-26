@@ -3,11 +3,14 @@ import tw, { styled } from "twin.macro";
 import Popup from "reactjs-popup";
 import Layout from "../components/layout";
 import Header from "../components/header";
+import Button from "../components/button";
+import Game from "../components/game";
 import { Modal } from "../components/rules";
 import { Rock, Paper, Scissors } from "../components/moves";
+import { RPS, LS } from "../components/game";
 import bg from "../assets/images/bg-triangle.svg";
 
-const Game = styled.div`
+const Setup = styled.div`
 	background: url(${bg});
 	background-size: 70%;
 	background-position: center;
@@ -18,45 +21,73 @@ const Game = styled.div`
 	${tw`mx-auto bg-no-repeat`};
 	${tw`width[19.5rem] height[17.625rem]`};
 	${tw`md:(width[29.75rem] height[26.875rem])`};
-	${tw`mt-[6.5625rem]`}
+
 	${tw`md:(mt-20)`};
 	${tw`flex flex-col justify-between`};
 `;
 
-const Button = styled.button`
-	${tw`width[8rem] height[2.5rem]`};
-	${tw`text-white uppercase`};
-	${tw`bg-transparent border border-white`};
-	${tw`font-regular text-base line-height[19.2px] letter-spacing[2.5px] rounded-md transition-all duration-300 ease-in-out`};
-	${tw`hover:(text-copy-dark bg-white)`};
-`;
+const rps: RPS[] = [`ROCK`, `PAPER`, `SCISSORS`];
 
 const Home = (): JSX.Element => {
 	const [open, setOpen] = useState<boolean>(false);
 	const [score, setScore] = useState(0);
-	const [size, setSize] = useState<
-		`THREE` | `FIVE` | `MATCH`
-	>(`THREE`);
+	const [choice, setChoice] = useState<LS | null>(null);
+	const [houseChoice, setHouseChoice] = useState<LS>(
+		rps[Math.floor(Math.random() * 3)]
+	);
 
 	return (
 		<Layout>
-			<div tw="w-screen h-screen mx-auto">
+			<div tw="w-screen h-screen mx-auto flex flex-col justify-between">
 				<Header gameType="RPS" score={score} />
 
-				<Game>
-					<div tw="flex items-center justify-between">
-						<Paper size={size} />
-						<Scissors size={size} />
-					</div>
-					<div tw="flex justify-center">
-						<Rock size={size} />
-					</div>
-				</Game>
+				{!choice ? (
+					<Setup>
+						<div tw="flex items-center justify-between">
+							<button
+								type="button"
+								onClick={() => setChoice(`PAPER`)}
+							>
+								<Paper size="THREE" />
+							</button>
+							<button
+								type="button"
+								onClick={() => setChoice(`SCISSORS`)}
+							>
+								<Scissors size="THREE" />
+							</button>
+						</div>
+						<div tw="flex justify-center">
+							<button
+								type="button"
+								onClick={() => setChoice(`ROCK`)}
+							>
+								<Rock size="THREE" />
+							</button>
+						</div>
+					</Setup>
+				) : (
+					<Game
+						gameType="RPS"
+						userChoice={choice}
+						setChoice={setChoice}
+						houseChoice={houseChoice}
+						setHouseChoice={setHouseChoice}
+						score={score}
+						setScore={setScore}
+					/>
+				)}
 
-				<div tw="w-full flex justify-end self-end p-8">
+				<div tw="w-full flex justify-center self-end p-8 md:(justify-end)">
 					<Popup
 						open={open}
-						trigger={<Button type="button">rules</Button>}
+						trigger={() => (
+							<Button
+								size="SM"
+								label="rules"
+								onClick={() => setOpen(!open)}
+							/>
+						)}
 						modal
 						on="click"
 						overlayStyle={{

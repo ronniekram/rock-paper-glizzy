@@ -19,8 +19,7 @@ const Wrapper = styled.div`
 	${tw`bg-white`};
 	${tw`mx-auto`};
 	${tw`font-display`};
-	${tw`md:(p-8)`};
-	${tw`pt-20 md:(pt-0)`}
+	${tw`pt-20 md:(p-8)`}
 
 	@keyframes anvil {
 		0% {
@@ -98,7 +97,7 @@ export const Modal = ({
 							</button>
 						</div>
 					</div>
-					<div tw="mx-auto mt-12 width[19.0625rem] height[16.9375rem]">
+					<div tw="mx-auto mt-8 width[19.0625rem] height[16.9375rem]">
 						{gameType === `RPS` ? (
 							<img src={rules} alt="Rules" />
 						) : (
