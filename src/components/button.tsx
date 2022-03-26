@@ -1,4 +1,3 @@
-import React from "react";
 import tw, { styled } from "twin.macro";
 
 // ========== TYPES
@@ -9,7 +8,7 @@ export type ButtonProps = {
 };
 
 // ========== STYLES
-const bothBtn = tw`font-regular font-display text-base line-height[19.2px] letter-spacing[2.5px] rounded-lg`;
+const bothBtn = tw`font-regular text-base line-height[19.2px] letter-spacing[2.5px] rounded-md transition duration-300 ease-in-out`;
 
 const LgButton = styled.button`
 	background: linear-gradient(0deg, #f3f3f3 0%, #ffffff 100%);

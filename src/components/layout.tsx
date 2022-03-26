@@ -29,7 +29,7 @@ const Layout = ({
 	children: React.ReactNode;
 }): JSX.Element => (
 	<GameProvider>
-		<div {...rest}>
+		<div {...rest} tw="font-display">
 			<GlobalStyles />
 			<Global styles={fonts} />
 			{children}

@@ -24,11 +24,36 @@ const Image = styled.img`
 
 const Wrapper = styled.div`
 	${tw`w-screen h-screen`};
-	${tw`lg:(width[25rem] height[25.9375rem])`};
+	${tw`md:(width[25rem] height[25.9375rem])`};
 	${tw`bg-white`};
 	${tw`mx-auto`};
 	${tw`flex justify-center items-center`};
-	${tw`lg:(p-8)`};
+	${tw`md:(p-8)`};
+
+	@keyframes anvil {
+		0% {
+			transform: scale(1) translateY(0px);
+			opacity: 0;
+			box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+		}
+		1% {
+			transform: scale(0.96) translateY(10px);
+			opacity: 0;
+			box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+		}
+		100% {
+			transform: scale(1) translateY(0px);
+			opacity: 1;
+			box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+		}
+	}
+
+	@media (min-width: 768px) {
+		-webkit-animation: anvil 0.3s
+			cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+		animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9)
+			forwards;
+	}
 `;
 
 // ===== COMPONENTS =====
@@ -38,7 +63,7 @@ export const Modal = ({ open, setOpen }: ModalProps) => {
 
 	return (
 		<Wrapper>
-			{width < 758 ? (
+			{width < 768 ? (
 				<div tw="flex flex-col justify-between height[36.8125rem]">
 					<h1 tw="uppercase text-copy-dark text-center text-[32px]">
 						rules

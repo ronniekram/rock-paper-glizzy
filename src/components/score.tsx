@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 	p {
 		line-height: 19px;
 		letter-spacing: 2.5px;
-		${tw`text-[10px] font-regular font-display uppercase`};
+		${tw`text-[10px] font-regular uppercase`};
 		${tw`xl:(text-base)`};
 		${tw`text-copy-score`};
 	}
