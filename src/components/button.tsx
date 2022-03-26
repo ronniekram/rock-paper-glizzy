@@ -4,7 +4,7 @@ import tw, { styled } from "twin.macro";
 export type ButtonProps = {
 	size: `SM` | `LG`;
 	label: string;
-	onClick: () => void;
+	onClick?: () => void;
 };
 
 // ========== STYLES
@@ -20,17 +20,9 @@ const LgButton = styled.button`
 
 const SmButton = styled.button`
 	${tw`width[8rem] height[2.5rem]`};
-	${tw`text-white hover:(text-copy-dark)`};
+	${tw`text-white hover:(text-copy-dark bg-white)`};
 	${tw`bg-transparent border border-white`};
 	${bothBtn};
-
-	&:hover {
-		background: linear-gradient(
-			0deg,
-			#f3f3f3 0%,
-			#ffffff 100%
-		);
-	}
 `;
 
 // ========== COMPONENTS

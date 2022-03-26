@@ -1,11 +1,6 @@
-import React, {
-	Dispatch,
-	SetStateAction,
-	useContext,
-} from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import tw, { styled } from "twin.macro";
 import { useWindowSize } from "react-use";
-import { GameContext } from "../context/game-context";
 import rules from "../assets/images/rules/rules-3.svg";
 import rulesBonus from "../assets/images/rules/rules-5.svg";
 import X from "../assets/images/close.svg";
@@ -14,21 +9,18 @@ import X from "../assets/images/close.svg";
 type ModalProps = {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
-	children: JSX.Element;
+	gameType: `RPS` | `LS`;
 };
 
 // ===== STYLES =====
-const Image = styled.img`
-	${tw`width[19.0625rem] height[16.9375rem]`};
-`;
-
 const Wrapper = styled.div`
 	${tw`w-screen h-screen`};
 	${tw`md:(width[25rem] height[25.9375rem])`};
 	${tw`bg-white`};
 	${tw`mx-auto`};
-	${tw`flex justify-center items-center`};
+	${tw`font-display`};
 	${tw`md:(p-8)`};
+	${tw`pt-20 md:(pt-0)`}
 
 	@keyframes anvil {
 		0% {
@@ -57,22 +49,25 @@ const Wrapper = styled.div`
 `;
 
 // ===== COMPONENTS =====
-export const Modal = ({ open, setOpen }: ModalProps) => {
-	const { gameType } = useContext(GameContext);
+export const Modal = ({
+	open,
+	setOpen,
+	gameType,
+}: ModalProps) => {
 	const { width } = useWindowSize();
 
 	return (
 		<Wrapper>
 			{width < 768 ? (
 				<div tw="flex flex-col justify-between height[36.8125rem]">
-					<h1 tw="uppercase text-copy-dark text-center text-[32px]">
+					<h1 tw="uppercase text-copy-dark text-center font-bold text-[32px]">
 						rules
 					</h1>
-					<div tw="mx-auto">
+					<div tw="mx-auto width[19.0625rem] height[16.9375rem]">
 						{gameType === `RPS` ? (
-							<Image src={rules} alt="Rules" />
+							<img src={rules} alt="Rules" />
 						) : (
-							<Image src={rulesBonus} alt="Rules" />
+							<img src={rulesBonus} alt="Rules" />
 						)}
 					</div>
 					<button
@@ -87,23 +82,27 @@ export const Modal = ({ open, setOpen }: ModalProps) => {
 			) : (
 				<>
 					<div tw="flex items-center justify-between">
-						<h1 tw="uppercase text-copy-dark text-center text-[32px]">
-							rules
-						</h1>
-						<button
-							type="button"
-							aria-label="Close out rules"
-							onClick={() => setOpen(!open)}
-							tw="mx-auto"
-						>
-							<img src={X} alt="Close rules" />
-						</button>
+						<div>
+							<h1 tw="uppercase text-copy-dark text-center text-[32px]">
+								rules
+							</h1>
+						</div>
+						<div>
+							<button
+								type="button"
+								aria-label="Close out rules"
+								onClick={() => setOpen(!open)}
+								tw="mx-auto"
+							>
+								<img src={X} alt="Close rules" />
+							</button>
+						</div>
 					</div>
-					<div tw="mx-auto mt-12">
+					<div tw="mx-auto mt-12 width[19.0625rem] height[16.9375rem]">
 						{gameType === `RPS` ? (
-							<Image src={rules} alt="Rules" />
+							<img src={rules} alt="Rules" />
 						) : (
-							<Image src={rulesBonus} alt="Rules" />
+							<img src={rulesBonus} alt="Rules" />
 						)}
 					</div>
 				</>

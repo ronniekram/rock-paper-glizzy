@@ -1,6 +1,5 @@
-import React from "react";
 import tw, { styled } from "twin.macro";
-import { Ripple } from "./ripple";
+// import { Ripple } from "./ripple";
 import lizard from "../assets/images/moves/lizard.svg";
 import paper from "../assets/images/moves/paper.svg";
 import rock from "../assets/images/moves/rock.svg";
@@ -13,165 +12,191 @@ type Move = {
 };
 
 // ===== STYLES =====
+const Wrapper = styled.div`
+	${tw`cursor-pointer`};
+	${tw`transition duration-700 ease-in-out`};
+	${tw`hocus:(scale-110)`};
+`;
+
 const Three = styled.img`
 	${tw`width[8.125rem] height[8.3125rem]`};
-	${tw`xl:(width[12.375rem] height[12.6875])`};
+	${tw`md:(width[12.375rem] height[12.6875rem])`};
 `;
 
 const Five = styled.img`
 	${tw`width[8.125rem] height[8.3125rem]`};
-	${tw`xl:(width[12.375rem] height[12.6875])`};
+	${tw`md:(width[12.375rem] height[12.6875rem])`};
 	${tw`transition duration-200 ease-in-out`};
 `;
 
 const Match = styled.img`
 	${tw`width[8.125rem] height[8.3125rem]`};
-	${tw`xl:(width[12.375rem] height[12.6875])`};
+	${tw`md:(width[12.375rem] height[12.6875rem])`};
 	${tw`transition duration-200 ease-in-out`};
 `;
 
 // ===== COMPONENTS =====
 export const Lizard = ({ size }: Move) => {
+	let move;
+
 	if (size === `THREE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Three src={lizard} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 	if (size === `FIVE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Five src={lizard} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 
-	return (
-		<Ripple>
+	move = (
+		<Wrapper>
 			<div>
 				<Match src={lizard} />
 			</div>
-		</Ripple>
+		</Wrapper>
 	);
+
+	return move;
 };
 
 export const Paper = ({ size }: Move) => {
+	let move;
+
 	if (size === `THREE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Three src={paper} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 	if (size === `FIVE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Five src={paper} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 
-	return (
-		<Ripple>
+	move = (
+		<Wrapper>
 			<div>
 				<Match src={paper} />
 			</div>
-		</Ripple>
+		</Wrapper>
 	);
+
+	return move;
 };
 
 export const Rock = ({ size }: Move) => {
+	let move;
+
 	if (size === `THREE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Three src={rock} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 	if (size === `FIVE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Five src={rock} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 
-	return (
-		<Ripple>
+	move = (
+		<Wrapper>
 			<div>
 				<Match src={rock} />
 			</div>
-		</Ripple>
+		</Wrapper>
 	);
+
+	return move;
 };
 
 export const Scissors = ({ size }: Move) => {
+	let move;
+
 	if (size === `THREE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Three src={scissors} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 	if (size === `FIVE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Five src={scissors} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 
-	return (
-		<Ripple>
+	move = (
+		<Wrapper>
 			<div>
 				<Match src={scissors} />
 			</div>
-		</Ripple>
+		</Wrapper>
 	);
+
+	return move;
 };
 
 export const Spock = ({ size }: Move) => {
+	let move;
+
 	if (size === `THREE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Three src={spock} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 	if (size === `FIVE`) {
-		return (
-			<Ripple>
+		move = (
+			<Wrapper>
 				<div>
 					<Five src={spock} />
 				</div>
-			</Ripple>
+			</Wrapper>
 		);
 	}
 
-	return (
-		<Ripple>
+	move = (
+		<Wrapper>
 			<div>
 				<Match src={spock} />
 			</div>
-		</Ripple>
+		</Wrapper>
 	);
+
+	return move;
 };
