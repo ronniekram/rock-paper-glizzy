@@ -62,11 +62,19 @@ export const Modal = ({
 					<h1 tw="uppercase text-copy-dark text-center font-bold text-[32px]">
 						rules
 					</h1>
-					<div tw="mx-auto width[19.0625rem] height[16.9375rem]">
+					<div tw="mx-auto">
 						{gameType === `RPS` ? (
-							<img src={rules} alt="Rules" />
+							<img
+								src={rules}
+								alt="Rules"
+								tw="width[19.0625rem] height[16.9375rem]"
+							/>
 						) : (
-							<img src={rulesBonus} alt="Rules" />
+							<img
+								src={rulesBonus}
+								alt="Rules"
+								tw="width[19.0625rem] height[16.9375rem]"
+							/>
 						)}
 					</div>
 					<button
@@ -99,9 +107,17 @@ export const Modal = ({
 					</div>
 					<div tw="mx-auto mt-8 width[19.0625rem] height[16.9375rem]">
 						{gameType === `RPS` ? (
-							<img src={rules} alt="Rules" />
+							<img
+								src={rules}
+								alt="Rules"
+								tw="width[19.0625rem] height[16.9375rem]"
+							/>
 						) : (
-							<img src={rulesBonus} alt="Rules" />
+							<img
+								src={rulesBonus}
+								alt="Rules"
+								tw="width[19.0625rem] height[16.9375rem]"
+							/>
 						)}
 					</div>
 				</>

@@ -7,13 +7,7 @@ import React, {
 import tw, { styled } from "twin.macro";
 import { useWindowSize } from "react-use";
 import Button from "./button";
-import {
-	Rock,
-	Paper,
-	Scissors,
-	Lizard,
-	Spock,
-} from "./moves";
+import { Token } from "./moves";
 
 // ========== TYPES
 export type RPS = `ROCK` | `PAPER` | `SCISSORS`;
@@ -36,16 +30,14 @@ type GameProps = {
 
 // ========== STYLES
 const Wrapper = styled.div`
-	${tw`width[19.4375rem] height[11.375rem]`};
-	${tw`md:(width[39rem] height[24.6875rem])`};
-	${tw`lg:(width[46.875rem])`};
+	${tw`height[11.375rem] md:(height[24.6875rem])`};
 	${tw`flex justify-between items-center`};
 	${tw`mx-auto`};
 `;
 
 const TokenWrapper = styled.div`
 	${tw`width[8.125rem] height[8.3125rem]`};
-	${tw`md:(width[12.375rem] height[12.6875rem])`};
+	${tw`md:(width[18.288125rem] height[18.75rem])`};
 	${tw`flex justify-center items-center`};
 `;
 
@@ -69,15 +61,15 @@ const ls: LS[] = [
 const returnToken = (token: LS) => {
 	switch (token) {
 		case `PAPER`:
-			return <Paper size="MATCH" />;
+			return <Token size="MATCH" name="paper" />;
 		case `SCISSORS`:
-			return <Scissors size="MATCH" />;
+			return <Token size="MATCH" name="scissors" />;
 		case `LIZARD`:
-			return <Lizard size="MATCH" />;
+			return <Token size="MATCH" name="lizard" />;
 		case `SPOCK`:
-			return <Spock size="MATCH" />;
+			return <Token size="MATCH" name="spock" />;
 		default:
-			return <Rock size="MATCH" />;
+			return <Token size="MATCH" name="rock" />;
 	}
 };
 
@@ -137,13 +129,13 @@ const Game = ({
 		<>
 			<Wrapper>
 				{/* USER CHOICE  */}
-				<div tw="flex flex-col items-center md:(flex flex-col-reverse items-center width[14.40625rem])">
+				<div tw="flex flex-col items-center mr-8 md:(flex flex-col-reverse items-center) lg:(mr-0)">
 					<TokenWrapper>{userToken}</TokenWrapper>
 					<Text>you picked</Text>
 				</div>
 
 				{width >= 1024 && (
-					<div tw="w-max text-center">
+					<div tw="w-max text-center mx-14">
 						<h2 tw="text-white font-bold text-[56px] line-height[67.2px] mb-4">
 							{winner === `USER` ? `YOU WIN!` : `YOU LOSE!`}
 						</h2>
@@ -165,7 +157,7 @@ const Game = ({
 					</div>
 				)}
 				{/* HOUSE CHOICE  */}
-				<div tw="flex flex-col items-center md:(flex flex-col-reverse items-center width[14.40625rem])">
+				<div tw="flex flex-col items-center ml-8 md:(flex flex-col-reverse items-center) lg:(ml-0)">
 					<TokenWrapper>{houseToken}</TokenWrapper>
 					<Text>the house picked</Text>
 				</div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import tw, { styled } from "twin.macro";
 import Popup from "reactjs-popup";
 import Layout from "../components/layout";
@@ -6,7 +6,7 @@ import Header from "../components/header";
 import Button from "../components/button";
 import Game from "../components/game";
 import { Modal } from "../components/rules";
-import { Rock, Paper, Scissors } from "../components/moves";
+import { Token } from "../components/moves";
 import { RPS, LS } from "../components/game";
 import bg from "../assets/images/bg-triangle.svg";
 
@@ -48,13 +48,13 @@ const Home = (): JSX.Element => {
 								type="button"
 								onClick={() => setChoice(`PAPER`)}
 							>
-								<Paper size="THREE" />
+								<Token size="THREE" name="paper" />
 							</button>
 							<button
 								type="button"
 								onClick={() => setChoice(`SCISSORS`)}
 							>
-								<Scissors size="THREE" />
+								<Token size="THREE" name="scissors" />
 							</button>
 						</div>
 						<div tw="flex justify-center">
@@ -62,7 +62,7 @@ const Home = (): JSX.Element => {
 								type="button"
 								onClick={() => setChoice(`ROCK`)}
 							>
-								<Rock size="THREE" />
+								<Token size="THREE" name="rock" />
 							</button>
 						</div>
 					</Setup>

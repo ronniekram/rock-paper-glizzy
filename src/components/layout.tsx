@@ -10,7 +10,7 @@ const Layout = ({
 }): JSX.Element => (
 	<div
 		{...rest}
-		tw="font-display h-screen w-screen overflow-hidden"
+		tw="font-display h-screen w-screen"
 		css={[
 			`background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);`,
 		]}
