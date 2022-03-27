@@ -96,7 +96,21 @@ const determineWinner = (
 	ifVal(`PAPER`, `SCISSORS`, `HOUSE`);
 	ifVal(`ROCK`, `PAPER`, `HOUSE`);
 	// ROCK, PAPER, SCISSORS, LIZARD, SPOCK --> USER WINS
+	ifVal(`ROCK`, `LIZARD`, `USER`);
+	ifVal(`LIZARD`, `SPOCK`, `USER`);
+	ifVal(`SPOCK`, `SCISSORS`, `USER`);
+	ifVal(`SPOCK`, `ROCK`, `USER`);
+	ifVal(`PAPER`, `SPOCK`, `USER`);
+	ifVal(`LIZARD`, `PAPER`, `USER`);
+	ifVal(`SCISSORS`, `LIZARD`, `USER`);
 	// ROCK, PAPER, SCISSORS, LIZARD, SPOCK --> HOUSE WINS
+	ifVal(`LIZARD`, `ROCK`, `HOUSE`);
+	ifVal(`SPOCK`, `LIZARD`, `HOUSE`);
+	ifVal(`SCISSORS`, `SPOCK`, `HOUSE`);
+	ifVal(`ROCK`, `SPOCK`, `HOUSE`);
+	ifVal(`SPOCK`, `PAPER`, `HOUSE`);
+	ifVal(`PAPER`, `LIZARD`, `HOUSE`);
+	ifVal(`LIZARD`, `SCISSORS`, `HOUSE`);
 };
 
 // ========== COMPONENTS
@@ -137,7 +151,9 @@ const Game = ({
 				{width >= 1024 && (
 					<div tw="w-max text-center mx-14">
 						<h2 tw="text-white font-bold text-[56px] line-height[67.2px] mb-4">
-							{winner === `USER` ? `YOU WIN!` : `YOU LOSE!`}
+							{winner === `USER` && `YOU WIN!`}
+							{winner === `HOUSE` && `YOU LOSE!`}
+							{!winner && `IT'S A TIE!`}
 						</h2>
 						<Button
 							size="LG"
@@ -166,7 +182,9 @@ const Game = ({
 			{width < 1024 && (
 				<div tw="w-max mx-auto text-center">
 					<h2 tw="text-white font-bold text-[56px] line-height[67.2px] mt-4">
-						{winner === `USER` ? `YOU WIN!` : `YOU LOSE!`}
+						{winner === `USER` && `YOU WIN!`}
+						{winner === `HOUSE` && `YOU LOSE!`}
+						{!winner && `IT'S A TIE!`}
 					</h2>
 					<Button
 						size="LG"
